@@ -37,7 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void updateEmployee(int id, Employee employee) {
+    public Employee updateEmployee(int id, Employee employee) {
         try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             employee.setId(id);
@@ -45,6 +45,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             transaction.commit();
         }
 
+        return employee;
     }
 
     @Override
